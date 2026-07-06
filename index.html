@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Computing Devices & Technology Solutions</title>
+<meta name="description" content="Authorized supplier of PCs, laptops, printers & accessories since 1993. Dell, HP, Lenovo, Logitech and more.">
+<style>
+  :root{
+    --ink:#0B1220;
+    --panel:#101B2D;
+    --panel-2:#16233A;
+    --line:#25324A;
+    --paper:#F4F6FA;
+    --accent:#3DE0C4;
+    --accent-2:#5B8CFF;
+    --text-dim:#8B99B3;
+    --mono: 'JetBrains Mono','Courier New',monospace;
+    --sans: 'Inter','Segoe UI',Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,18,32,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1120px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:0.02em;font-size:18px;}
+  .logo-mark{
+    width:32px;height:32px;border-radius:8px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:flex;align-items:center;justify-content:center;
+    color:var(--ink);font-family:var(--mono);font-weight:900;font-size:16px;
+  }
+  .navlinks{display:flex;gap:28px;font-size:14px;color:var(--text-dim);}
+  .navlinks a:hover{color:var(--paper);}
+  .nav-cta{
+    font-family:var(--mono);font-size:13px;
+    border:1px solid var(--accent);color:var(--accent);
+    padding:8px 16px;border-radius:6px;
+  }
+  .nav-cta:hover{background:var(--accent);color:var(--ink);}
+  .navlinks-mobile{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:110px 0 90px;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .grid-bg{
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:56px 56px;
+    opacity:0.25;
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 100%);
+  }
+  .hero-inner{position:relative;z-index:2;}
+  .eyebrow{
+    font-family:var(--mono);font-size:12.5px;color:var(--accent);
+    letter-spacing:0.12em;text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;margin-bottom:22px;
+  }
+  .eyebrow::before{content:'';width:8px;height:8px;background:var(--accent);border-radius:50%;box-shadow:0 0 12px var(--accent);}
+  h1{
+    font-size:clamp(38px,6vw,68px);
+    line-height:1.04;
+    font-weight:800;
+    letter-spacing:-0.02em;
+    max-width:820px;
+    margin:0 0 22px;
+  }
+  h1 span{color:var(--accent);}
+  .hero-sub{
+    font-size:18px;color:var(--text-dim);max-width:560px;line-height:1.6;margin-bottom:34px;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px;}
+  .btn-primary{
+    background:var(--accent);color:var(--ink);font-weight:700;
+    padding:14px 26px;border-radius:8px;font-size:15px;
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .btn-primary:hover{background:#33c9af;}
+  .btn-ghost{
+    border:1px solid var(--line);color:var(--paper);
+    padding:14px 26px;border-radius:8px;font-size:15px;
+  }
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+  .brand-strip{
+    display:flex;gap:36px;flex-wrap:wrap;align-items:center;
+    font-family:var(--mono);font-size:13px;color:var(--text-dim);
+    letter-spacing:0.08em;
+    padding-top:28px;border-top:1px solid var(--line);
+  }
+  .brand-strip b{color:var(--paper);font-weight:700;}
+
+  /* ---------- Stats ---------- */
+  .stats{padding:72px 0;border-bottom:1px solid var(--line);}
+  .stats-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  }
+  .stat{
+    padding:0 24px;border-left:1px solid var(--line);
+  }
+  .stat:first-child{border-left:none;padding-left:0;}
+  .stat-num{
+    font-family:var(--mono);font-size:clamp(30px,4vw,44px);font-weight:700;color:var(--accent);
+    line-height:1;
+  }
+  .stat-label{color:var(--text-dim);font-size:14px;margin-top:10px;line-height:1.4;}
+
+  /* ---------- Section shared ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:620px;margin-bottom:52px;}
+  .tag{
+    font-family:var(--mono);font-size:12px;color:var(--accent-2);
+    letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;display:block;
+  }
+  h2{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-0.01em;margin:0 0 14px;}
+  .section-desc{color:var(--text-dim);font-size:16px;line-height:1.65;}
+
+  /* ---------- Why choose (cards) ---------- */
+  .why{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .why-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  }
+  .why-card{background:var(--panel-2);padding:32px 28px;}
+  .why-chip{
+    width:38px;height:38px;border-radius:8px;background:rgba(61,224,196,0.12);
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+    font-family:var(--mono);color:var(--accent);font-weight:700;font-size:15px;
+  }
+  .why-card h3{font-size:17px;margin:0 0 10px;font-weight:700;}
+  .why-card p{color:var(--text-dim);font-size:14.5px;line-height:1.6;margin:0;}
+
+  /* ---------- Brands ---------- */
+  .brands-row{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px;
+  }
+  .brand-box{
+    border:1px solid var(--line);border-radius:12px;padding:30px 20px;text-align:center;
+    font-family:var(--mono);font-weight:700;font-size:17px;letter-spacing:0.03em;
+    transition:border-color .2s, color .2s;
+  }
+  .brand-box:hover{border-color:var(--accent);color:var(--accent);}
+  .brands-note{color:var(--text-dim);font-size:14.5px;line-height:1.6;max-width:640px;}
+
+  /* ---------- Catalog ---------- */
+  .catalog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .cat-card{
+    border:1px solid var(--line);border-radius:14px;padding:28px;background:var(--panel);
+    transition:transform .2s, border-color .2s;
+  }
+  .cat-card:hover{transform:translateY(-4px);border-color:var(--accent-2);}
+  .cat-index{font-family:var(--mono);color:var(--text-dim);font-size:13px;margin-bottom:16px;}
+  .cat-card h3{font-size:18px;margin:0 0 10px;}
+  .cat-card p{color:var(--text-dim);font-size:14.5px;line-height:1.6;margin:0;}
+  .catalog-sub{margin-top:64px;}
+
+  /* ---------- Process ---------- */
+  .process{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .process-row{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;
+  }
+  .process-step{padding:0 24px 0 0;position:relative;}
+  .process-step:not(:last-child)::after{
+    content:'→';position:absolute;right:-6px;top:6px;color:var(--line);font-size:20px;
+  }
+  .step-num{
+    font-family:var(--mono);font-size:13px;color:var(--ink);background:var(--accent);
+    width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:700;margin-bottom:18px;
+  }
+  .process-step h3{font-size:16.5px;margin:0 0 8px;}
+  .process-step p{color:var(--text-dim);font-size:14px;line-height:1.6;margin:0;}
+
+  /* ---------- Contact ---------- */
+  .contact-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:start;}
+  .contact-card{
+    border:1px solid var(--line);border-radius:16px;padding:40px;background:var(--panel);
+  }
+  .contact-row{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);}
+  .contact-row:last-child{border-bottom:none;}
+  .contact-icon{
+    width:36px;height:36px;border-radius:8px;background:rgba(91,140,255,0.12);color:var(--accent-2);
+    display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:15px;flex-shrink:0;
+  }
+  .contact-label{font-size:12px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;}
+  .contact-value{font-size:15.5px;font-weight:600;}
+  .contact-note{
+    font-family:var(--mono);font-size:12.5px;color:var(--text-dim);
+    border:1px dashed var(--line);border-radius:10px;padding:16px 18px;margin-top:24px;line-height:1.6;
+  }
+  .cta-panel{
+    border-radius:16px;padding:40px;
+    background:linear-gradient(160deg, var(--panel-2), var(--panel));
+    border:1px solid var(--line);
+    display:flex;flex-direction:column;justify-content:center;height:100%;
+  }
+  .cta-panel h3{font-size:22px;margin:0 0 14px;}
+  .cta-panel p{color:var(--text-dim);font-size:14.5px;line-height:1.6;margin:0 0 24px;}
+
+  footer{
+    border-top:1px solid var(--line);padding:32px 0;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    color:var(--text-dim);font-size:13.5px;
+  }
+
+  @media (max-width: 860px){
+    .navlinks{display:none;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);row-gap:32px;}
+    .stat{border-left:none;padding-left:0;}
+    .stat:nth-child(odd){border-left:none;}
+    .why-grid{grid-template-columns:1fr;}
+    .brands-row{grid-template-columns:repeat(2,1fr);}
+    .catalog-grid{grid-template-columns:1fr;}
+    .process-row{grid-template-columns:1fr;gap:32px;}
+    .process-step::after{display:none;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="logo"><div class="logo-mark">A</div>ALPHA</div>
+    <div class="navlinks">
+      <a href="#why">Why Alpha</a>
+      <a href="#brands">Brands</a>
+      <a href="#catalog">Catalog</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get a Quote</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Authorized reseller · Since 1993</div>
+    <h1>Computing devices &amp; technology solutions, <span>sourced right, delivered on time.</span></h1>
+    <p class="hero-sub">Alpha is a trusted regional supplier of genuine, warrantied PCs, laptops, printers, and accessories — from single units to large-volume corporate rollouts.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Request a quote →</a>
+      <a href="#catalog" class="btn-ghost">Browse catalog</a>
+    </div>
+    <div class="brand-strip">
+      <span><b>DELL</b></span>
+      <span><b>HP</b></span>
+      <span><b>LENOVO</b></span>
+      <span><b>LOGITECH</b></span>
+      <span>+ MORE</span>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Years in business, since 1993</div></div>
+    <div class="stat"><div class="stat-num">4+</div><div class="stat-label">Global brand partners</div></div>
+    <div class="stat"><div class="stat-num">1000s</div><div class="stat-label">Devices delivered</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Genuine, warrantied hardware</div></div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Why choose Alpha</span>
+      <h2>Three decades of trust, built order by order.</h2>
+      <p class="section-desc">Founded in 1993, Alpha has grown into a trusted regional supplier of computing hardware — serving businesses, institutions, and individual customers with genuine, warrantied products from the industry's leading brands.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-chip">01</div><h3>Authorized Reseller</h3><p>Genuine products sourced directly through official brand channels.</p></div>
+      <div class="why-card"><div class="why-chip">02</div><h3>Reliable Delivery</h3><p>Timely fulfillment for individual orders and bulk corporate deployments.</p></div>
+      <div class="why-card"><div class="why-chip">03</div><h3>Warranty Assured</h3><p>Every device backed by manufacturer warranty and local support.</p></div>
+      <div class="why-card"><div class="why-chip">04</div><h3>Technical Support</h3><p>Setup, configuration, and after-sales assistance from our team.</p></div>
+      <div class="why-card"><div class="why-chip">05</div><h3>Wide Inventory</h3><p>Laptops, desktops, printers, and accessories — always in stock.</p></div>
+      <div class="why-card"><div class="why-chip">06</div><h3>30+ Years of Trust</h3><p>Three decades of relationships with businesses and institutions.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="brands">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Our brand partners</span>
+      <h2>We supply devices from the world's leading manufacturers.</h2>
+    </div>
+    <div class="brands-row">
+      <div class="brand-box">DELL</div>
+      <div class="brand-box">HP</div>
+      <div class="brand-box">LENOVO</div>
+      <div class="brand-box">LOGITECH</div>
+    </div>
+    <p class="brands-note">Also sourcing printers and accessories from Canon, Epson, Brother, and other leading brands upon request.</p>
+  </div>
+</section>
+
+<section id="catalog">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Product catalog</span>
+      <h2>PCs &amp; laptops for every budget and use case.</h2>
+    </div>
+    <div class="catalog-grid">
+      <div class="cat-card"><div class="cat-index">/ 01</div><h3>Business Laptops</h3><p>Dell Latitude, HP EliteBook, Lenovo ThinkPad — built for productivity and durability.</p></div>
+      <div class="cat-card"><div class="cat-index">/ 02</div><h3>Consumer Laptops</h3><p>Dell Inspiron, HP Pavilion, Lenovo IdeaPad — everyday computing at every budget.</p></div>
+      <div class="cat-card"><div class="cat-index">/ 03</div><h3>Desktop PCs</h3><p>Dell OptiPlex, HP ProDesk, Lenovo ThinkCentre — reliable towers and all-in-ones for the office.</p></div>
+    </div>
+
+    <div class="section-head catalog-sub">
+      <span class="tag">Printers &amp; accessories</span>
+      <h2>Everything else your office needs.</h2>
+    </div>
+    <div class="catalog-grid">
+      <div class="cat-card"><div class="cat-index">/ 04</div><h3>Printers &amp; Scanners</h3><p>Inkjet, laser, and all-in-one printers for home and office — plus toner &amp; ink supplies.</p></div>
+      <div class="cat-card"><div class="cat-index">/ 05</div><h3>Keyboards</h3><p>Logitech wired and wireless keyboards, ergonomic and standard layouts.</p></div>
+      <div class="cat-card"><div class="cat-index">/ 06</div><h3>Mice &amp; Pointing Devices</h3><p>Logitech mice for productivity, design, and gaming use cases.</p></div>
+      <div class="cat-card"><div class="cat-index">/ 07</div><h3>Headsets &amp; Webcams</h3><p>Logitech audio and video accessories for meetings and collaboration.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">How we work with you</span>
+      <h2>From first inquiry to ongoing support.</h2>
+    </div>
+    <div class="process-row">
+      <div class="process-step"><div class="step-num">1</div><h3>Consult</h3><p>Share your needs — quantity, brand, budget, and specs.</p></div>
+      <div class="process-step"><div class="step-num">2</div><h3>Quote</h3><p>Receive a fast, transparent quote for your order.</p></div>
+      <div class="process-step"><div class="step-num">3</div><h3>Deliver</h3><p>We fulfill and deliver on schedule, from single units to bulk orders.</p></div>
+      <div class="process-step"><div class="step-num">4</div><h3>Support</h3><p>Ongoing warranty coverage and after-sales technical support.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Get in touch</span>
+      <h2>Tell us what you need — we'll take it from there.</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-row">
+          <div class="contact-icon">☎</div>
+          <div><div class="contact-label">Mobile</div><div class="contact-value">01024460097</div></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">@</div>
+          <div><div class="contact-label">Email</div><div class="contact-value">ahmedsamir@alpha-acc.com</div></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">⌂</div>
+          <div><div class="contact-label">Address</div><div class="contact-value">Agouza, Giza, Egypt</div></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">↗</div>
+          <div><div class="contact-label">Website</div><div class="contact-value">www.alphacomputing.com</div></div>
+        </div>
+      </div>
+      <div class="cta-panel">
+        <h3>Ready to order?</h3>
+        <p>Whether it's one laptop or a full corporate rollout, our team will source, configure, and deliver — with warranty and support included.</p>
+        <a href="mailto:ahmedsamir@alpha-acc.com" class="btn-primary">Email us →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <div>© <span id="year"></span> Alpha Computing Devices &amp; Technology Solutions.</div>
+  <div>Authorized supplier since 1993 · Dell · HP · Lenovo · Logitech</div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
